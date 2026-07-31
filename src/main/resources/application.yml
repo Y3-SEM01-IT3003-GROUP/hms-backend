@@ -10,7 +10,7 @@ spring:
 
   jpa:
     hibernate:
-      ddl-auto: validate
+      ddl-auto: update
 
     show-sql: true
 
@@ -21,7 +21,7 @@ spring:
           time_zone: UTC
 
   flyway:
-    enabled: true
+    enabled: false
     locations: classpath:db/migration
 
 server:
