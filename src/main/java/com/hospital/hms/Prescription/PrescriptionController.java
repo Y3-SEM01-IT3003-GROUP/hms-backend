@@ -24,12 +24,12 @@ public class PrescriptionController {
     }
 
     @PutMapping("/{id}")
-    public Prescription updatePrescription(@PathVariable Long id, @RequestBody Prescription details) {
+    public Prescription updatePrescription(@PathVariable int id, @RequestBody Prescription details) {
         return prescriptionService.updatePrescription(id, details);
     }
 
     @DeleteMapping("/{id}")
-    public void deletePrescription(@PathVariable Long id) {
+    public void deletePrescription(@PathVariable int id) {
         prescriptionService.deletePrescription(id);
     }
 }

@@ -24,7 +24,7 @@ public class PrescriptionService {
         return prescriptionRepository.findAll();
     }
 
-    public Prescription updatePrescription(Long id, Prescription details) {
+    public Prescription updatePrescription(int id, Prescription details) {
         Prescription p = prescriptionRepository.findById(id)
                 .orElseThrow(() -> new ResponseStatusException(
                         HttpStatus.NOT_FOUND, "Prescription not found with id: " + id
@@ -42,7 +42,7 @@ public class PrescriptionService {
         return prescriptionRepository.save(p);
     }
 
-    public void deletePrescription(Long id) {
+    public void deletePrescription(int id) {
         if (!prescriptionRepository.existsById(id)) {
             throw new ResponseStatusException(
                     HttpStatus.NOT_FOUND, "Prescription not found with id: " + id
