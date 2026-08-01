@@ -15,6 +15,9 @@ public class Medicine {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
+
+    private String medicineId;
+
     private String name;
     private Integer quantity;
     private Date mfd;
