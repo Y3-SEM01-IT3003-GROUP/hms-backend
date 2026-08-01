@@ -35,7 +35,11 @@ public class PatientService {
         user = userRepository.save(user);
 
         patient.setUser(user);
-        return patientRepository.save(patient);
+        patientRepository.save(patient);
+        user.setPassword(null);
+
+        patient.setUser(user); // Remove the user reference before returning the patient object
+        return patient;
     }
 
 
