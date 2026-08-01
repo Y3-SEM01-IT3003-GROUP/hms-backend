@@ -26,6 +26,11 @@ public enum Permission {
     MEDICINE_UPDATE("medicine:update"),
     MEDICINE_DELETE("medicine:delete"),
 
+    BILL_CREATE("bill:create"),
+    BILL_READ("bill:read"),
+    BILL_UPDATE("bill:update"),
+    BILL_DELETE("bill:delete"),
+
     ADMIN_CREATE("admin:create"),
     ADMIN_READ("admin:read"),
     ADMIN_UPDATE("admin:update"),
