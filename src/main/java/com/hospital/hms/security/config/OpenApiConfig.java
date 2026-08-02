@@ -17,8 +17,8 @@ import io.swagger.v3.oas.annotations.servers.Server;
                         email = "hospitalManagement@gmail.com",
                         url = ""
                 ),
-                description = "OpenApi documentation for Spring Security",
-                title = "OpenApi specification",
+                description = "API documentation for the Hospital Management System",
+                title = "Hospital Management System API",
                 version = "1.0",
                 license = @License(
                         name = "",
@@ -29,7 +29,7 @@ import io.swagger.v3.oas.annotations.servers.Server;
         servers = {
                 @Server(
                         description = "Local ENV",
-                        url = "http://localhost:8080"
+                        url = "http://localhost:8081"
                 ),
                 @Server(
                         description = "PROD ENV",
