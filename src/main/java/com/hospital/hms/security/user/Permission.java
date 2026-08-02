@@ -8,8 +8,10 @@ public enum Permission {
     PATIENT_READ("patient:read"),
     PATIENT_UPDATE("patient:update"),
 
+    DOCTOR_CREATE("doctor:create"),
     DOCTOR_READ("doctor:read"),
     DOCTOR_UPDATE("doctor:update"),
+    DOCTOR_DELETE("doctor:delete"),
 
     APPOINTMENT_CREATE("appointment:create"),
     APPOINTMENT_READ("appointment:read"),
@@ -43,9 +45,3 @@ public enum Permission {
         this.permission = permission;
     }
 }
-
-
-
-
-
-
