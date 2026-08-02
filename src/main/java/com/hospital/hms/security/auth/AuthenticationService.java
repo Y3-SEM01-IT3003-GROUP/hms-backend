@@ -4,7 +4,6 @@ import com.hospital.hms.security.config.JwtService;
 import com.hospital.hms.security.token.Token;
 import com.hospital.hms.security.token.TokenRepository;
 import com.hospital.hms.security.token.TokenType;
-import com.hospital.hms.security.user.Role;
 import com.hospital.hms.security.user.User;
 import com.hospital.hms.security.user.UserRepository;
 import com.fasterxml.jackson.databind.ObjectMapper;
@@ -29,11 +28,9 @@ public class AuthenticationService {
     private final AuthenticationManager authenticationManager;
 
     public AuthenticationResponse register(RegisterRequest request) {
-        if (request.getRole() == Role.ADMIN) {
-            throw new IllegalArgumentException("Admin accounts cannot be self-registered");
-        }
-
         var user = User.builder()
+                .firstname(request.getFirstname())
+                .lastname(request.getLastname())
                 .username(request.getUsername())
                 .email(request.getEmail())
                 .password(passwordEncoder.encode(request.getPassword()))
@@ -118,5 +115,3 @@ public class AuthenticationService {
         }
     }
 }
-
-
