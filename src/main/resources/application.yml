@@ -5,7 +5,7 @@ spring:
   datasource:
     url: jdbc:postgresql://localhost:5432/hms_db
     username: postgres
-    password: Shehan23
+    password: slhira
     driver-class-name: org.postgresql.Driver
 
   jpa:
@@ -24,5 +24,22 @@ spring:
     enabled: false
     locations: classpath:db/migration
 
+springdoc:
+  api-docs:
+    enabled: true
+    path: /v3/api-docs
+  swagger-ui:
+    enabled: true
+    path: /swagger-ui.html
+    operations-sorter: method
+
 server:
   port: 8081
+
+app:
+  admin:
+    username: admin
+    email: admin@hospital.com
+    password: Admin@123
+    firstname: System
+    lastname: Administrator
