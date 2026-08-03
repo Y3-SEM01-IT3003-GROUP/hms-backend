@@ -29,11 +29,6 @@ public class RoomController {
         return roomService.getAll();
     }
 
-    @GetMapping("/department/{department}")
-    public List<Room> getByDepartment(@PathVariable String department) {
-        return roomService.getByDepartment(department);
-    }
-
     @GetMapping("/available")
     public List<Room> getAvailableRooms() {
         return roomService.getAvailableRooms();
