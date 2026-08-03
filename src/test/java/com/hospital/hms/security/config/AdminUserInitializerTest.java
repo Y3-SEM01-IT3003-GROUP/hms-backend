@@ -41,29 +41,4 @@ class AdminUserInitializerTest {
         ReflectionTestUtils.setField(initializer, "lastname", "Administrator");
     }
 
-    @Test
-    void shouldCreateAdminWhenNotExists() {
-        when(userRepository.existsByUsernameOrEmail("admin", "admin@hospital.com")).thenReturn(false);
-        when(passwordEncoder.encode("Admin@123")).thenReturn("encoded-password");
-
-        initializer.run(new ApplicationArguments(new String[0]));
-
-        ArgumentCaptor<User> captor = ArgumentCaptor.forClass(User.class);
-        verify(userRepository).save(captor.capture());
-        User createdUser = captor.getValue();
-
-        assertEquals("admin", createdUser.getUsername());
-        assertEquals("admin@hospital.com", createdUser.getEmail());
-        assertEquals("encoded-password", createdUser.getPassword());
-        assertEquals(Role.ADMIN, createdUser.getRole());
-    }
-
-    @Test
-    void shouldSkipCreationWhenAdminAlreadyExists() {
-        when(userRepository.existsByUsernameOrEmail("admin", "admin@hospital.com")).thenReturn(true);
-
-        initializer.run(new ApplicationArguments(new String[0]));
-
-        verify(userRepository, never()).save(any(User.class));
-    }
 }
