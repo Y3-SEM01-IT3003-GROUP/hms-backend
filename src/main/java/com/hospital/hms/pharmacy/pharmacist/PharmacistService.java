@@ -3,6 +3,7 @@ package com.hospital.hms.pharmacy.pharmacist;
 import com.hospital.hms.security.user.Role;
 import com.hospital.hms.security.user.User;
 import com.hospital.hms.security.user.UserRepository;
+import com.hospital.hms.security.user.UserService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
@@ -54,6 +55,14 @@ public class PharmacistService {
 
     public Pharmacist update(Integer id, Pharmacist pharmacist) {
         Pharmacist existing = getById(id);
+
+        User incomingUser = pharmacist.getUser();
+
+        existing.getUser().setFirstname(incomingUser.getFirstname());
+        existing.getUser().setLastname(incomingUser.getLastname());
+        existing.getUser().setEmail(incomingUser.getEmail());
+        existing.getUser().setPassword(passwordEncoder.encode(incomingUser.getPassword()));
+        existing.getUser().setRole(Role.PHARMACIST);
         existing.setStatus(pharmacist.getStatus());
         return pharmacistRepository.save(existing);
     }
