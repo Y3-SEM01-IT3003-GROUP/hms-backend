@@ -34,19 +34,11 @@ public class RoomService {
                 .orElseThrow(() -> new IllegalStateException("Room '" + roomId + "' not found"));
     }
 
-
     @Transactional(readOnly = true)
     public List<Room> getAll() {
         return roomRepository.findAll();
     }
-
-
-    @Transactional(readOnly = true)
-    public List<Room> getByDepartment(String department) {
-        return roomRepository.findByDepartment(department);
-    }
-
-
+    
     @Transactional(readOnly = true)
     public List<Room> getAvailableRooms() {
         return roomRepository.findByAvailableBedsGreaterThan(0);

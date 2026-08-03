@@ -11,8 +11,6 @@ public interface RoomRepository extends JpaRepository<Room, Integer> {
 
     boolean existsByRoomNumber(String roomNumber);
 
-    List<Room> findByDepartment(String department);
-
     List<Room> findByAvailableBedsGreaterThan(Integer minBeds);
 }
 
