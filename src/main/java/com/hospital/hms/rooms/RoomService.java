@@ -20,7 +20,7 @@ public class RoomService {
 
         room.setRoomId(null);
         room.setAvailableBeds(room.getCapacity());
-        room.setStatus(RoomStatus.AVAILABLE);
+        room.setStatus(room.getStatus() != null ? room.getStatus() : RoomStatus.AVAILABLE);
 
         Room saved = roomRepository.save(room);
         saved.setRoomId("ROOM-" + String.format("%04d", saved.getId()));
@@ -47,9 +47,21 @@ public class RoomService {
 
     public Room update(String roomId, Room room) {
         Room existing = getByRoomId(roomId);
-        existing.setDepartment(room.getDepartment());
-        existing.setCapacity(room.getCapacity());
-        existing.setAvailableBeds(room.getAvailableBeds());
+        if (room.getRoomNumber() != null) {
+            existing.setRoomNumber(room.getRoomNumber());
+        }
+        if (room.getDepartment() != null) {
+            existing.setDepartment(room.getDepartment());
+        }
+        if (room.getCapacity() != null) {
+            existing.setCapacity(room.getCapacity());
+        }
+        if (room.getAvailableBeds() != null) {
+            existing.setAvailableBeds(room.getAvailableBeds());
+        }
+        if (room.getStatus() != null) {
+            existing.setStatus(room.getStatus());
+        }
         return roomRepository.save(existing);
     }
 
